@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday 🎂</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #8e44ad);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      padding: 40px 25px;
+      text-align: center;
+      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+    }
+
+    .emoji {
+      font-size: 70px;
+      animation: bounce 1.5s infinite;
+    }
+
+    h1 {
+      margin-top: 15px;
+      font-size: clamp(2.2rem, 10vw, 4rem);
+      color: #fff;
+      text-shadow: 0 0 15px #fff,
+                   0 0 30px #ffeb3b;
+      animation: glow 2s infinite alternate;
+    }
+
+    h2 {
+      margin-top: 15px;
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+    }
+
+    p {
+      margin: 20px 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      background: #fff;
+      color: #e84393;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.08);
+      background: #ffeaa7;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      top: -30px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff;
+      }
+
+      to {
+        text-shadow: 0 0 25px #fff,
+                     0 0 45px #ffeaa7;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .container {
+        padding: 35px 18px;
+      }
+
+      .emoji {
+        font-size: 55px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="emoji">🎂</div>
+
+    <h1>Happy Birthday!</h1>
+
+    <h2>🎉 Dear Friend 🎉</h2>
+
+    <p>
+      Wishing you a beautiful birthday filled with
+      happiness, love, laughter and unforgettable moments! ❤️
+      <br><br>
+      May all your dreams come true. ✨
+    </p>
+
+    <button onclick="startConfetti()">
+      🎊 Celebrate Again
+    </button>
+  </div>
+
+  <script>
+    function startConfetti() {
+
+      // Create 150 confetti pieces
+      for (let i = 0; i < 150; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        // Random position
+        confetti.style.left = Math.random() * 100 + "vw";
+
+        // Random color
+        const colors = [
+          "#ff4757",
+          "#ffa502",
+          "#2ed573",
+          "#1e90ff",
+          "#ff6b81",
+          "#eccc68",
+          "#ffffff"
+        ];
+
+        confetti.style.backgroundColor =
+          colors[Math.floor(Math.random() * colors.length)];
+
+        // Random size
+        confetti.style.width =
+          Math.random() * 8 + 6 + "px";
+
+        confetti.style.height =
+          Math.random() * 15 + 8 + "px";
+
+        // Random animation duration
+        confetti.style.animationDuration =
+          Math.random() * 3 + 2 + "s";
+
+        // Random delay
+        confetti.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+        // Random rotation
+        confetti.style.transform =
+          "rotate(" + Math.random() * 360 + "deg)";
+
+        document.body.appendChild(confetti);
+
+        // Remove after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, 6000);
+      }
+    }
+
+    // Start automatically
+    startConfetti();
+  </script>
+
+</body>
+</html>
